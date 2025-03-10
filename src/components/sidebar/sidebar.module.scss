@@ -1,0 +1,52 @@
+@use './../../styles/abstract/mixins' as *;
+@use './../../styles//abstract/functions' as *;
+
+.sidebar{
+    position: absolute;
+    height: calc(100vh - 20px);
+    top:toRem(0);
+    left: toRem(0);
+    z-index: 10000;
+    padding: toRem(10);
+    width: toRem(400);
+    @include flex-center(column, flex-start, flex-start );
+
+    
+
+    &_top{
+        background-color: #ffffff;
+        box-shadow: 0 0 toRem(10) var(--c-light);
+        margin-bottom: toRem(10);
+        @include flex-center();  
+        padding: toRem(10);
+        width: 100%;
+
+        img{
+            height: toRem(30);
+            cursor: pointer;
+        }
+    }
+
+    &_search{
+        flex: 1;
+        margin: 0 toRem(10);
+        @include flex-center();
+
+        input{
+            padding: toRem(10) toRem(25);
+            border: 1px solid var(--c-shade);
+            width: 100%;
+        }
+
+        img{
+            margin-left: toRem(-30);
+        }
+    }
+
+    &_cities{
+       background-color: #ffffff; 
+       box-shadow: 0 0 toRem(10) var(--c-light);
+       flex: 1;
+       padding: toRem(10);
+    }
+}

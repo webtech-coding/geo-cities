@@ -1,7 +1,8 @@
-@import './abstract/variables';
-@import './abstract/mixins';
-@import './abstract/functions';
+@forward './abstract/variables';
+//@use './abstract/mixins';
+//@forward './abstract/functions';
 
-@import './base/reset';
-@import './base/typography';
+@forward './base/reset';
+@forward './base/typography';
+
 

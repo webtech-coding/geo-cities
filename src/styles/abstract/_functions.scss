@@ -1,3 +1,4 @@
-@function rem($pixels, $base:16px){
-    @return calc($pixels / $base) * 1rem;
+@use 'sass:math';
+@function toRem($pxValue, $base:16) {
+    @return math.div($pxValue, $base) * 1rem; 
 }
