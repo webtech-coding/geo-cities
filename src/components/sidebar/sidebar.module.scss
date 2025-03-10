@@ -1,5 +1,6 @@
 @use './../../styles/abstract/mixins' as *;
-@use './../../styles//abstract/functions' as *;
+@use './../../styles/abstract/functions' as *;
+@use './../../styles/abstract/animations' as *;
 
 .sidebar{
     position: absolute;
@@ -48,5 +49,79 @@
        box-shadow: 0 0 toRem(10) var(--c-light);
        flex: 1;
        padding: toRem(10);
+       width: 100%;
+       @include flex-center(column, space-between);
+
+       &_list{
+        flex:1;
+        width: 100%;  
+        overflow-y: auto;
+
+        ul{
+
+            li{
+                margin-bottom: toRem(10);
+                padding:toRem(15) toRem(5);
+                border-left:3px solid var(--c-primary);
+                cursor: pointer;
+                border-bottom: 1px solid #cccccc;
+
+                &:hover{
+                    animation: listHover .4s ease-in forwards;
+                }
+
+            }
+        }
+
+        p{
+            padding: toRem(10);
+            background-color: var(--c-primary);
+            color: #ffffff;
+        }
+
+       }
+
+       button{
+            background-color: var(--c-primary);
+            color: #ffffff;
+            width: 100%;
+            padding: toRem(16);
+            font-size: toRem(16);
+            cursor: pointer;
+        }
+    }    
+}
+
+.city{
+    @include flex-center(); 
+    justify-content: flex-start;
+    
+
+    &__check{
+        height: toRem(30);
+        width: toRem(30);
+        border-radius: 50%;;
+        border: 1px solid var(--c-primary);
+        display: inline-block;
+        margin:0 toRem(10);
+
+        &_active{
+            border: none;
+            background-color: var(--c-primary);;
+        }
     }
+
+    &__name{
+        font-weight: 600;
+    }
+}
+
+.countryCode{
+    padding-left: toRem(50);
+    color: var(--c-light);
+    font-size: toRem(14);
+}
+
+.active_city{
+    
 }

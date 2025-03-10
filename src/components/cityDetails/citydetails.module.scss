@@ -1,0 +1,48 @@
+@use './../../styles/abstract/mixins' as *;
+@use './../../styles/abstract/functions' as *;
+@use './../../styles/abstract/animations' as *;
+
+.citydetails{
+    position: absolute;
+    bottom: 30px;
+    left: 400px;
+    z-index:10000;
+    width: calc(100vw - 420px);
+
+    @include flex-center(row, flex-start);
+
+    &__card{
+        @include flex-center();
+        background-color: #ffffff;
+        box-shadow: 0 0 toRem(10) var(--c-light);
+        margin-right: toRem(20);
+        cursor: pointer;
+
+        img{
+            height: toRem(120);
+        }
+
+        &_icon{
+            border-right: 1px solid var(--c-shade);
+            padding:toRem(20);
+            background-color: var(--c-primary);
+        }
+    }
+
+    &__text{
+        font-size: toRem(24);
+        padding: 0 toRem(50);
+
+        span{
+            &:first-of-type{
+                font-size: toRem(14);
+                text-transform: uppercase;
+            }
+            display: block;
+
+            a{
+                color: var(--c-primary);
+            }
+        }
+    }
+}

@@ -1,4 +1,5 @@
 export interface ICityData{
+    id:number,
     wikiDataId:string,
     name:string,
     country:string,
