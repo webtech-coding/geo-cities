@@ -81,16 +81,6 @@
 
        }
 
-       button{
-            background-color: var(--c-primary);
-            color: #ffffff;
-            width: 100%;
-            padding: toRem(16);
-            font-size: toRem(16);
-            cursor: pointer;
-            margin-bottom: toRem(20);
-        }
-
         &_hide{
             display: none;
         }
@@ -102,6 +92,23 @@
         height: toRem(36);
         &:hover{
             animation: listHover .4s ease forwards;
+        }
+    }
+
+    &_button{
+        background-color: var(--c-primary);
+        color: #ffffff;
+        width: 100%;
+        padding: toRem(16);
+        font-size: toRem(16);
+        cursor: pointer;
+        margin-bottom: toRem(20);
+
+        @include flex-center();
+
+        img{
+            height: toRem(20);
+            margin-right: toRem(10)
         }
     }
 }

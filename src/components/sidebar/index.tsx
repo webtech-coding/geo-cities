@@ -8,7 +8,8 @@ import Styles from './sidebar.module.scss';
 import menu from './../../icons/menu.svg';
 import sort from './../../icons/sort.svg';
 import search from './../../icons/search.svg';
-
+import reloadIcon from './../../icons/reload.svg';
+ 
 
 type sideBarProps = {
     citiesData: ICityData[],
@@ -62,9 +63,9 @@ const SideBar:FC<sideBarProps> =({citiesData, citySelection, selectedCity, fetch
                     <div className={Styles.sidebar_cities_list}>
                     {
                         currentOffset<=10 && (
-                            <button onClick={()=>fetchMoreCities()} disabled={loading || currentOffset>10}>
-                                Fetch more cities
-                            </button>
+                            <div className={Styles.sidebar_button} onClick={()=>fetchMoreCities()}>
+                               <img src={reloadIcon}/> <span>Fetch more cities</span>
+                            </div>
                         )
                     }
                         <ul>

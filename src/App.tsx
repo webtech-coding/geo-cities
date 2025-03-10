@@ -1,7 +1,6 @@
 import { useEffect, useState, type FC, type ReactElement } from 'react'
 
 import SideBar from './components/sidebar';
-import CityDetails from './components/cityDetails';
 import CityMap from './components/cityMap';
 import { fetchGeoCityData } from './api/api';
 import { ICityData } from './utils/interfaces';
@@ -12,9 +11,7 @@ const App:FC = ():ReactElement=> {
   const [loading, setLoading] = useState<boolean>(false);
   const [selectedCity, setSelectedCity] = useState<ICityData | null>(null);
 
-  useEffect(()=>{   
-   
-    
+  useEffect(()=>{ 
     const fetchCityData = async ()=>{
       const data:ICityData[] = await fetchGeoCityData(currentOffset);
       const citiesData = [...geoCityData, ...data]

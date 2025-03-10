@@ -1,5 +1,5 @@
 import { useEffect, useState, type FC, type ReactElement } from "react";
-import { MapContainer, TileLayer, Marker,Popup, useMap } from 'react-leaflet'
+import { MapContainer, TileLayer, Marker,Popup } from 'react-leaflet'
 import { ICityData } from "../../utils/interfaces";
 import MapUpdater from "./mapUpdater";
 
