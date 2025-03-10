@@ -4,22 +4,26 @@
 
 .citydetails{
     position: absolute;
-    bottom: 30px;
+    bottom: 20px;
     left: 400px;
     z-index:10000;
-    width: calc(100vw - 420px);
+    width: toRem(300);
 
-    @include flex-center(row, flex-start);
+    @include flex-center(column, flex-start);
+    align-items: flex-start;
 
     &__card{
         @include flex-center();
+        justify-content: flex-start;
         background-color: #ffffff;
         box-shadow: 0 0 toRem(10) var(--c-light);
-        margin-right: toRem(20);
+        margin-bottom: toRem(20);
         cursor: pointer;
+        width: toRem(300);
+
 
         img{
-            height: toRem(120);
+            height: toRem(40);
         }
 
         &_icon{
@@ -30,8 +34,8 @@
     }
 
     &__text{
-        font-size: toRem(24);
-        padding: 0 toRem(50);
+        font-size: toRem(20);
+        padding: 0 toRem(10);
 
         span{
             &:first-of-type{
@@ -44,5 +48,9 @@
                 color: var(--c-primary);
             }
         }
+    }
+
+    &_hidden{
+        display: none;
     }
 }

@@ -4,8 +4,8 @@
  * @returns 
  */
 import { ICityData } from "../utils/interfaces";
-export const fetchGeoCityData = async (cityName:string):Promise<ICityData[]>=>{
-    const url = new URL(`https://${import.meta.env.VITE_GEO_HOST}/v1/geo/cities`);
+export const fetchGeoCityData = async (offset:number):Promise<ICityData[]>=>{
+    const url = new URL(`https://${import.meta.env.VITE_GEO_HOST}/v1/geo/cities?offset=${offset}&limit=${5}`);
     const options = {
         method:"GET",
         headers:{

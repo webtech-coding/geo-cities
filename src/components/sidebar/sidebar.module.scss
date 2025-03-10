@@ -10,9 +10,7 @@
     z-index: 10000;
     padding: toRem(10);
     width: toRem(400);
-    @include flex-center(column, flex-start, flex-start );
-
-    
+    @include flex-center(column, flex-start, flex-start );    
 
     &_top{
         background-color: #ffffff;
@@ -51,6 +49,8 @@
        padding: toRem(10);
        width: 100%;
        @include flex-center(column, space-between);
+       max-height: 100vh;
+       overflow-y: auto;
 
        &_list{
         flex:1;
@@ -88,8 +88,22 @@
             padding: toRem(16);
             font-size: toRem(16);
             cursor: pointer;
+            margin-bottom: toRem(20);
         }
-    }    
+
+        &_hide{
+            display: none;
+        }
+    }
+    
+    &_cta{
+        border: 1px solid var(--c-shade);
+        @include flex-center();
+        height: toRem(36);
+        &:hover{
+            animation: listHover .4s ease forwards;
+        }
+    }
 }
 
 .city{

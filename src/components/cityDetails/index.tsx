@@ -9,14 +9,16 @@ import globeIcon from './../../icons/globe.svg';
 import arrowIcon from './../../icons/arrow.svg';
 
 type CityDetailsProps={
-    selectedCity:ICityData | null
+    selectedCity:ICityData | null,
+    toggle:boolean
 }
 
-const CityDetails:FC<CityDetailsProps>=({selectedCity}):ReactElement=>{
+const CityDetails:FC<CityDetailsProps>=({selectedCity, toggle}):ReactElement=>{
+    console.log(toggle)
     if(!selectedCity)return <></>
 
     return(
-        <div className={Styles.citydetails}>
+        <div className={`${Styles.citydetails} ${toggle ? Styles.citydetails_hidden:'' }`}>
            <div className={Styles.citydetails__card}>
                 <div className={Styles.citydetails__card_icon}>
                     <img src={cityIcon} alt="city"/>
@@ -52,7 +54,7 @@ const CityDetails:FC<CityDetailsProps>=({selectedCity}):ReactElement=>{
                         population
                     </span>
                     <span>
-                        { selectedCity.population ? selectedCity.population : 'Not availabl' }
+                        { selectedCity.population ? selectedCity.population : 'Not available' }
                     </span>
                 </div>
            </div>

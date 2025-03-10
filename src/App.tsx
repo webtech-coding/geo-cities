@@ -7,35 +7,36 @@ import { fetchGeoCityData } from './api/api';
 import { ICityData } from './utils/interfaces';
 
 const App:FC = ():ReactElement=> {
-  const [currentCity, setCurrentCity] = useState<string>(import.meta.env.VITE_DEFAULT_CITY as string || 'helsinki')
+  const [currentOffset, setCurrentOffset] = useState<number>(0)
   const [geoCityData, setGeoCityData] = useState<ICityData[] | []>([]);
-  const [fetchingData, setFetchingData] = useState<boolean>(false);
+  const [loading, setLoading] = useState<boolean>(false);
   const [selectedCity, setSelectedCity] = useState<ICityData | null>(null);
 
-  useEffect(()=>{
-    if(!currentCity)return
-    return
+  useEffect(()=>{   
+   
+    
     const fetchCityData = async ()=>{
-      const citiesData:ICityData[] = await fetchGeoCityData(currentCity);
+      const data:ICityData[] = await fetchGeoCityData(currentOffset);
+      const citiesData = [...geoCityData, ...data]
       setGeoCityData(citiesData);
-      setFetchingData(false);
+      setLoading(false);
     }
-    setFetchingData(true)
+    setLoading(true)
     fetchCityData();
-  },[currentCity])
+  },[currentOffset])
 
   return(
     <div className='app-container'>
       <CityMap 
          selectedCity={selectedCity}
       />
-      <CityDetails 
-        selectedCity={selectedCity} 
-      />
       <SideBar 
         citiesData={geoCityData} 
         selectedCity={selectedCity}
         citySelection={(data)=>setSelectedCity(data)}
+        fetchMoreCities={()=>setCurrentOffset(currentOffset + 5)}
+        loading={loading}
+        currentOffset={currentOffset}
       />
     </div>
   )
