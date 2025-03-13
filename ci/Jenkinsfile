@@ -1,6 +1,7 @@
 pipeline{
     agent any
     stages{
+        // THE ADD BUILD STEP STARTED 
         stage("Build"){
             agent{
                 docker {
@@ -12,12 +13,27 @@ pipeline{
                sh '''                
                 node --version
                 npm --version
-                ls -la
+                #ls -la
                 npm ci
                 npm run build
-                ls -la
+                #ls -la
                '''
             }   
+        }
+
+        stage('deployment'){
+            agent{
+                docker {
+                    image 'node:22.5.1'
+                    reuseNode true
+                }
+            }
+            steps{
+                sh '''
+                    npm install netlify-cli
+                    node_moduels/.bin/netlify --version
+                '''
+            }
         }
     }
 }
