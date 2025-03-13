@@ -19,9 +19,15 @@ pipeline{
                     image 'node:22.5.1'
                     reuseNode true
                 }
-            } 
+            }
+            environment{
+                VITE_GEO_HOST = 'wft-geo-db.p.rapidapi.com'
+                VITE_GEO_HOST_KEY = credentials('geo-host-key')
+            }
             steps{
-               sh '''                
+               sh '''
+                set VITE_GEO_HOST =${VITE_GEO_HOST}
+                set VITE_GEO_HOST_KEY=${VITE_GEO_HOST_KEY}       
                 node --version
                 npm --version
                 #ls -la
