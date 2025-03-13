@@ -1,14 +1,21 @@
 pipeline{
     agent any
     stages{
-        stage("Running from script"){
+
+        stage("Build"){
+            agent{
+                docker 'node:22.5.1'
+                reuseNode true
+            } 
             steps{
-                echo "Hello this print comes from the file script"
-            }   
-        }
-        stage("Stage 2 of running the script"){
-            steps{
-                echo "Running the script from stage 2"
+               sh '''                
+                node --version
+                npm --version
+                ls -la
+                npm ci
+                npm run build
+                ls -la
+               '''
             }   
         }
     }
