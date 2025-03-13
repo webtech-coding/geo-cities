@@ -1,0 +1,15 @@
+pipeline{
+    agent any
+    stages{
+        stage("Running from script"){
+            steps{
+                echo "Hello this print comes from the file script"
+            }   
+        }
+        stage("Stage 2 of running the script"){
+            steps{
+                echo "Running the script from stage 2"
+            }   
+        }
+    }
+}
