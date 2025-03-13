@@ -21,7 +21,7 @@ type sideBarProps = {
 }
 
 const SideBar:FC<sideBarProps> =({citiesData, citySelection, selectedCity, fetchMoreCities, loading, currentOffset}):ReactElement=>{
-    console.log(currentOffset)
+    console.log(loading)
 
     const [toggleCities, setToggleCities] = useState<boolean>(false);
     const [searchText, setSearchText] = useState<string>('');
