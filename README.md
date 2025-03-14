@@ -1,54 +1,53 @@
-# React + TypeScript + Vite
+# Geo city app
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+ A simple web app for visualizing cities. The city's location is marked on the map, and detailed information about the selected city is displayed on the page.
 
-Currently, two official plugins are available:
+ The site has been deployed at [Geo city App](https://cool-croissant-3dce44.netlify.app/)
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+ ![Project Screenshot](public/screenshot.png)
 
-## Expanding the ESLint configuration
+ The techs used for the app are:
+- [React](https://react.dev/) 
+- [Typescript](https://www.typescriptlang.org/)
+- [SCSS](https://sass-lang.com/)
+- [React Leaflet](https://react-leaflet.js.org/)
+    Leaflet is a lightweight, open-source JavaScript library for building interactive maps. The location of a city will be visualized on the map.
+- [Vite](https://vite.dev/) 
+- [Jenkin](https://www.jenkins.io/)
+- [Deployment - netlify](https://www.netlify.com/)
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+## Running app locally
 
-```js
-export default tseslint.config({
-  extends: [
-    // Remove ...tseslint.configs.recommended and replace with this
-    ...tseslint.configs.recommendedTypeChecked,
-    // Alternatively, use this for stricter rules
-    ...tseslint.configs.strictTypeChecked,
-    // Optionally, add this for stylistic rules
-    ...tseslint.configs.stylisticTypeChecked,
-  ],
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
+  #### GeoDB Cities
+  The app uses GeoDB Cities from rapidap to fetch cities. [Please signup on the apidapi](https://rapidapi.com/wirefreethought/api/geodb-cities) and get the personal apidapi key which is necessary while requesting an API.
+
+  #### local repository
+- Clone the repository.
+- Npm install to install all the dependencies.
+- Rename the file .env.example to .env and change the content as below
+
+```
+  VITE_GEO_HOST=wft-geo-db.p.rapidapi.com
+  VITE_GEO_HOST_KEY=[your-x-rapidapi-key]
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+  - Run npm dev to build the application locally.
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+## Build and deploy
 
-export default tseslint.config({
-  plugins: {
-    // Add the react-x and react-dom plugins
-    'react-x': reactX,
-    'react-dom': reactDom,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended typescript rules
-    ...reactX.configs['recommended-typescript'].rules,
-    ...reactDom.configs.recommended.rules,
-  },
-})
-```
+  #### Jenkins
+  Jenkin pipleline is core for the app's automation. The *Jenkinfile* has been written to get the **main** branch from the repository and run the build.
+
+  Use the jenkin portal to save the the **x-rapidapi-key** from rapidapi as the id **geo-host-key**. This is required to set the .env varaibale during deployment.
+
+  #### Netlify deployment
+  The app will be deployed to Netlify. For the deployment you need to have Netlify account. Please sign up and get you SITE_ID and AUTH_TOKEN. Save the AUTH_TOKEN in the Jenkin credentials.
+
+  ```
+      environment{
+        //netlify side Id.
+        // netlify auth token saved in jenkin credentials
+        NETLIFY_SITE_ID = [site-id]
+        NETLIFY_AUTH_TOKEN = credentials('netlify-token')
+    }
+  ```

@@ -28,7 +28,7 @@ const CityMap:FC<cityMapProps> =({selectedCity}):ReactElement=>{
                 />
                 <Marker position={position}>
                     <Popup>
-                    A pretty CSS3 popup. <br /> Easily customizable.
+                    {selectedCity?.name}({selectedCity?.country})
                     </Popup>
                 </Marker>
                 <MapUpdater 
