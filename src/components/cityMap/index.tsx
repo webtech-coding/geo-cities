@@ -28,7 +28,7 @@ const CityMap:FC<cityMapProps> =({selectedCity}):ReactElement=>{
                 />
                 <Marker position={position}>
                     <Popup>
-                    {selectedCity?.name}({selectedCity?.country})
+                    {selectedCity?.name} ({selectedCity?.country})
                     </Popup>
                 </Marker>
                 <MapUpdater 

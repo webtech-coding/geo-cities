@@ -6,7 +6,7 @@
 
  ![Project Screenshot](public/screenshot.png)
 
- The techs used for the app are:
+ **The techs used for the app are**:
 - [React](https://react.dev/) 
 - [Typescript](https://www.typescriptlang.org/)
 - [SCSS](https://sass-lang.com/)
