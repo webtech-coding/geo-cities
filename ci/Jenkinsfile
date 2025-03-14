@@ -11,7 +11,7 @@ pipeline{
     stages{
         // THE ADD BUILD STEP STARTED 
         stage("Git Checkout"){
-            step{
+            steps{
                 git checkout: 'main', url:'https://github.com/webtech-coding/geo-cities.git'
             }
         }
