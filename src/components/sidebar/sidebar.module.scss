@@ -137,12 +137,51 @@
     }
 }
 
-.countryCode{
+.country{
     padding-left: toRem(50);
     color: var(--c-light);
     font-size: toRem(14);
 }
 
-.active_city{
-    
+.appinfo{
+    position: absolute;
+    z-index: 100000;
+    top: toRem(10);
+    right: toRem(10);
+    @include flex-center(column);
+    align-items: flex-end;
+
+    img{
+        height: toRem(36);
+        width: toRem(36);
+    }
+
+    &__icon{
+        height: toRem(60);
+        width: toRem(60);
+        background-color: var(--c-primary);
+        @include flex-center();
+        border-radius:50%;
+        cursor: pointer;
+
+        &:hover  ~ .appinfo__text{
+            display: block;
+        }
+    }
+
+    &__text{
+        background-color: #ffffff;
+        padding: toRem(20);
+        max-width: toRem(400);
+        border-left: 4px solid var(--c-primary);
+        display: none;
+        animation: containerFadeIn .4s ease-in-out forwards; 
+        line-height: 1.6;
+        margin-top: toRem(5);
+        p{
+            margin-bottom: toRem(5);
+        }
+    }
+
 }
+

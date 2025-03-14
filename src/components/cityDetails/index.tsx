@@ -14,7 +14,6 @@ type CityDetailsProps={
 }
 
 const CityDetails:FC<CityDetailsProps>=({selectedCity, toggle}):ReactElement=>{
-    console.log(toggle)
     if(!selectedCity)return <></>
 
     return(
@@ -83,7 +82,7 @@ const CityDetails:FC<CityDetailsProps>=({selectedCity, toggle}):ReactElement=>{
                        More info
                     </span>
                     <span>
-                        <a href={`https://www.wikidata.org/wiki/${selectedCity.wikiDataId}`} target="_blank">Click for more</a>
+                        <a href={`https://www.wikidata.org/wiki/${selectedCity.wikiDataId}`} target="_blank">Click for more...</a>
                     </span>
                 </div>
            </div>

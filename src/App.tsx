@@ -15,8 +15,10 @@ const App:FC = ():ReactElement=> {
     const fetchCityData = async ()=>{
       const data:ICityData[] = await fetchGeoCityData(currentOffset);
       const citiesData = [...geoCityData, ...data]
+      //when cities are fetched, make the first one as selected city.
       setGeoCityData(citiesData);
       setLoading(false);
+      setSelectedCity(citiesData[0])
     }
     setLoading(true)
     fetchCityData();

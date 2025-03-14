@@ -16,8 +16,8 @@ const CityList:FC<cityListProps>=({city, citySelection, selectedCity}):ReactElem
                 <span className={`${(city.id === (selectedCity && selectedCity.id)) ? Styles.city__check_active:null} ${Styles.city__check}`}></span>
                 <span className={Styles.city__name}>{city.name}</span>
             </div>
-            <div className={Styles.countryCode}>
-                {city.countryCode}
+            <div className={Styles.country}>
+                {city.country}
             </div>
        </li>
     )

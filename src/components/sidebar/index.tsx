@@ -3,12 +3,14 @@ import React, { Fragment, useState, type FC, type ReactElement } from "react";
 import { ICityData } from "../../utils/interfaces";
 import CityList from "./cityList";
 import CityDetails from "../cityDetails";
+import AppInfo from "./appInfo";
 
 import Styles from './sidebar.module.scss';
 import menu from './../../icons/menu.svg';
 import sort from './../../icons/sort.svg';
 import search from './../../icons/search.svg';
 import reloadIcon from './../../icons/reload.svg';
+
  
 
 type sideBarProps = {
@@ -21,7 +23,6 @@ type sideBarProps = {
 }
 
 const SideBar:FC<sideBarProps> =({citiesData, citySelection, selectedCity, fetchMoreCities, loading, currentOffset}):ReactElement=>{
-    console.log(loading)
 
     const [toggleCities, setToggleCities] = useState<boolean>(false);
     const [searchText, setSearchText] = useState<string>('');
@@ -32,7 +33,6 @@ const SideBar:FC<sideBarProps> =({citiesData, citySelection, selectedCity, fetch
     }
 
     const getCitiesToRender=()=>{
-       
         return citiesData.filter(city=>{
             return city.name.toLocaleLowerCase().includes(searchText.toLocaleLowerCase().trim())
         }).sort((a,b)=> {
@@ -62,7 +62,7 @@ const SideBar:FC<sideBarProps> =({citiesData, citySelection, selectedCity, fetch
                 <div className={`${Styles.sidebar_cities} ${!toggleCities ? '': Styles.sidebar_cities_hide}`}>
                     <div className={Styles.sidebar_cities_list}>
                     {
-                        currentOffset<=10 && (
+                        currentOffset<=10 && !loading && (
                             <div className={Styles.sidebar_button} onClick={()=>fetchMoreCities()}>
                                <img src={reloadIcon}/> <span>Fetch more cities</span>
                             </div>
@@ -83,13 +83,14 @@ const SideBar:FC<sideBarProps> =({citiesData, citySelection, selectedCity, fetch
                             }
                         </ul>
                     </div>
-                    
-                    
                 </div>
             </aside>
             <CityDetails 
                 selectedCity={selectedCity}
                 toggle={toggleCities}
+            />
+            <AppInfo 
+                
             />
         </Fragment>
         

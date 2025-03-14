@@ -1,5 +1,6 @@
 /**
- * fetch the city by name
+ * fetch the cities
+ * the current plan of geo-city only allow fetching total of 15 cities, limit 5 at a time
  * @param cityName 
  * @returns 
  */
