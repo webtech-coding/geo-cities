@@ -12,7 +12,7 @@ pipeline{
         // THE ADD BUILD STEP STARTED 
         stage("Git Checkout"){
             steps{
-                git checkout: 'main', url:'https://github.com/webtech-coding/geo-cities.git'
+                git branch: 'main', url:'https://github.com/webtech-coding/geo-cities.git'
             }
         }
 
