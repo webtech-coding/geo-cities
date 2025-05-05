@@ -2,7 +2,7 @@
 
  A simple web app for visualizing cities. The city's location is marked on the map, and detailed information about the selected city is displayed on the page.
 
- The site has been deployed at [Geo city App](https://cool-croissant-3dce44.netlify.app/)
+ The site has been deployed on [Geo city App](https://cool-croissant-3dce44.netlify.app/)
 
  ![Project Screenshot](public/screenshot.png)
 
